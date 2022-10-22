@@ -14,7 +14,7 @@ export default function Page({children, pageTitle}) {
 
 
   return (
-    <motion.div
+    <div
       className={`h-[200px] w-[300px] p-1 ${ctx[0] ? "bg-emerald-500" : "bg-stone-700"} transition-all duration-300 ease-in`} >
       <Head>
         <title>{title}</title>
@@ -31,7 +31,7 @@ export default function Page({children, pageTitle}) {
          <motion.div
           initial={{opacity: 0, y: 4}}
           animate={{opacity: 1, y: 0}}
-          transition={{duration: 2, delay: 1.5}}
+          transition={{duration: 2, delay: 1.3}}
           className="flex flex-col justify-around items-center h-full">
             {children}
           </motion.div>
@@ -41,7 +41,7 @@ export default function Page({children, pageTitle}) {
         
       </main>
         
-    </motion.div>
+    </div>
   )
 }
 
