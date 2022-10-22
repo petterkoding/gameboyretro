@@ -51,7 +51,7 @@ const Console = ({children}) => {
                 </div>
                 
                 {/* main screen */}
-                <div className="w-[300px] h-[200px] bg-emerald-500 rounded-md overflow-x-hidden hideScroll">
+                <div className="w-[300px] h-[200px] bg-emerald-500 rounded-md overflow-hidden">
                     {children}
                 </div>
 
@@ -99,11 +99,11 @@ const Console = ({children}) => {
 
                  {/* right control buttons */}
                 <div className="p-2 rounded-full rotate-[70deg] mr-12 bg-[#A09A91]">
-                    <div className="w-10 h-10 bg-[#963750] rounded-full mb-6">
+                    <div onClick={()=>consoleCtx[3]("A")} className="hover:cursor-pointer w-10 h-10 bg-[#963750] rounded-full mb-6">
                     <span className="pr-2 absolute right-[-22px] rotate-[-90deg] text-blue-800 uppercase font-bold">A</span>
                     </div>
 
-                    <div className="w-10 h-10 bg-[#963750]  rounded-full relative">
+                    <div onClick={()=>consoleCtx[3]("B")} className="hover:cursor-pointer w-10 h-10 bg-[#963750] rounded-full relative">
                         <span className="pr-2 absolute right-[-30px] rotate-[-90deg] text-blue-800 uppercase font-bold">B</span>
                     </div>
                 </div>

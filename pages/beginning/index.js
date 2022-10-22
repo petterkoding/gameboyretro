@@ -14,7 +14,7 @@ export default function Index() {
         <h2 className="text-[14px] mb-2">How it all began</h2>
         <p>
           I remember getting my first gameboy in the late 90&apos;s.
-          Gifted to me from my grandmother. The sheer joy of playing Super Mario.
+          It was a gift, given to me by my dear grandmother. 
         </p>
       </div> 
     </Page>
