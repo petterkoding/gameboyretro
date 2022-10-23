@@ -16,7 +16,7 @@ const Console = ({children}) => {
             <ArrowDownIcon className="w-20 h-20 text-black animate-bounce"/>
         </div>}
         
-        <span className="absolute top-1 left-8 z-10 uppercase font-bold text-gray-400">On Off</span>
+        <span className="absolute top-2 left-8 z-10 uppercase text-sm font-bold text-gray-400">off - on</span>
 
 
         {/* on off button */}

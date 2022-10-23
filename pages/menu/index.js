@@ -16,6 +16,9 @@ const Menu = () => {
             <Link href="/beginning">
                 <a className="hover:bg-green-400 px-2 py-1">Beginning</a>
             </Link>
+            <Link href="/software">
+                <a className="hover:bg-green-400 px-2 py-1">Software</a>
+            </Link>
         </div>
       </nav>
     </Page>
