@@ -2,14 +2,43 @@ import React, {useContext, useState, useEffect} from 'react'
 import { PlayIcon, ArrowDownIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { consoleContext } from '../context/Context'
+import { motion } from 'framer-motion'
 
 const Console = ({children}) => {
 
     const consoleCtx = useContext(consoleContext)
 
+    const [x, setX] = useState(0)
+    const [y, setY] = useState(0)
+
+    function moveDevice(dir){
+        if(dir === "RIGHT"){
+            setX([0,60,0])
+        }
+        if(dir === "LEFT"){
+            setX([0,-60,0])
+        }
+        if(dir === "UP"){
+            setY([0,-60,0])
+        }
+        if(dir === "DOWN"){
+            setY([0,60,0])
+        }
+    }
+
+    function resetConsolePos(){
+        setY(0)
+        setX(0)
+    }
+
 
   return (
-    <div className="scale-90 md:scale-100 bg-[#D0CCBD] w-[450px] h-[700px] rounded-xl rounded-br-[50px] flex flex-col justify-between relative z-[999] shadow-2xl">
+    <motion.div
+        initial={{x:0, y: 0}}
+        animate={{x: x, y: y}}
+        transition={{duration: 2, type: "tween"}}
+        onAnimationComplete={resetConsolePos}
+        className="scale-90 md:scale-100 bg-[#D0CCBD] w-[450px] h-[700px] rounded-xl rounded-br-[50px] flex flex-col justify-between relative z-[999] shadow-2xl">
 
         {/* pointing arrow */}
         {!consoleCtx[0] && <div className="absolute top-[-85px] left-5">
@@ -51,7 +80,18 @@ const Console = ({children}) => {
                 </div>
                 
                 {/* main screen */}
-                <div className="w-[300px] h-[200px] bg-emerald-500 rounded-md overflow-hidden">
+                <div className="w-[300px] h-[200px] bg-emerald-500 rounded-md relative overflow-hidden">
+                    {/* screen glow */}
+                    <motion.div
+                        initial={{y: "-150px", rotate: -30}}
+                        animate={{y: "350px", rotate: -30}}
+                        transition={{ duration: 1.2, repeat: Infinity, repeatType: "loop", repeatDelay: 4}}
+                        className={`absolute w-[700px] h-10  left-[-50%] top-[-30px] z-[100] ${consoleContext[0] ? "bg-green-400/20" : "bg-gray-300/20"}`} />
+                    <motion.div
+                        initial={{y: "-150px", rotate: -30}}
+                        animate={{y: "350px", rotate: -30}}
+                        transition={{ duration: 1.15, repeat: Infinity, repeatType: "loop", repeatDelay: 4, delay: 0.2}}
+                        className={`absolute w-[700px] h-3  left-[-50%] top-[-30px] z-[100] ${consoleContext[0] ? "bg-green-400/20" : "bg-gray-300/20"}`} />
                     {children}
                 </div>
 
@@ -73,19 +113,19 @@ const Console = ({children}) => {
 
                     <div className="w-[30px] h-[30px] bg-gray-800 relative">
 
-                        <button className="w-[30px] h-[30px] bg-gray-800 absolute right-[-30px] bottom-0 rounded-r-lg">
+                        <button onClick={()=>moveDevice("RIGHT")} className="w-[30px] h-[30px] bg-gray-800 absolute right-[-30px] bottom-0 rounded-r-lg after:hidden after:w-4 after:h-4 after:absolute after:top-1/2 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
                             <PlayIcon className="w-4 h-4 text-[#D0CCBD] absolute right-[-16px] top-0 translate-y-1/2"/>
                         </button>
 
-                        <button className="w-[30px] h-[30px] bg-gray-800 absolute left-[-30px] bottom-0 rounded-l-lg">
+                        <button onClick={()=>moveDevice("LEFT")} className="w-[30px] h-[30px] bg-gray-800 absolute left-[-30px] bottom-0 rounded-l-lg after:hidden after:w-4 after:h-4 after:absolute after:top-1/2 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
                             <PlayIcon className="w-4 h-4 text-[#D0CCBD] rotate-[180deg] absolute left-[-16px] translate-y-1/2 top-0"/>
                         </button>
 
-                        <button className="w-[30px] h-[30px] bg-gray-800 absolute left-0 top-[-30px] rounded-t-lg">
+                        <button onClick={()=>moveDevice("UP")} className="w-[30px] h-[30px] bg-gray-800 absolute left-0 top-[-30px] rounded-t-lg after:hidden after:w-4 after:h-4 after:absolute after:top-172 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
                             <PlayIcon className="w-4 h-4 text-[#D0CCBD] rotate-[-90deg] absolute left-0 top-[-16px] right-0 translate-x-1/2"/>
                         </button>
 
-                        <button className="w-[30px] h-[30px] bg-gray-800 absolute left-0 top-[30px] rounded-b-lg">
+                        <button onClick={()=>moveDevice("DOWN")} className="w-[30px] h-[30px] bg-gray-800 absolute left-0 top-[30px] rounded-b-lg after:hidden after:w-4 after:h-4 after:absolute after:top-1/2 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
                             <PlayIcon className="w-4 h-4 text-[#D0CCBD] rotate-[90deg] absolute left-0 bottom-[-16px] right-0 translate-x-1/2"/>
                         </button>
 
@@ -141,7 +181,7 @@ const Console = ({children}) => {
             </div>
         </div>
 
-    </div>
+    </motion.div>
   )
 }
 

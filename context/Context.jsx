@@ -1,6 +1,7 @@
 import React, {useState, createContext} from 'react'
 
-export const consoleContext = createContext(null)
+export const consoleContext = createContext()
+
 
 const Context = ({children}) => {
 
