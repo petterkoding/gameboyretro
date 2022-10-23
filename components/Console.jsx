@@ -13,16 +13,16 @@ const Console = ({children}) => {
 
     function moveDevice(dir){
         if(dir === "RIGHT"){
-            setX([0,60,0])
+            setX([0,20,0])
         }
         if(dir === "LEFT"){
-            setX([0,-60,0])
+            setX([0,-20,0])
         }
         if(dir === "UP"){
-            setY([0,-60,0])
+            setY([0,-20,0])
         }
         if(dir === "DOWN"){
-            setY([0,60,0])
+            setY([0,20,0])
         }
     }
 

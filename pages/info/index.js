@@ -6,7 +6,7 @@ import { PlayIcon } from "@heroicons/react/24/solid"
 
 export default function Index() {
   return (
-    <Page pageTitle="Project">
+    <Page pageTitle="Info">
         <h1 className="font-Pixel uppercase flex justify-around items-center text-sm underline">
           <PlayIcon className="w-3 h-3 text-black mr-1 animate-pulse"/>
           Software
