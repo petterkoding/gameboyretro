@@ -6,10 +6,10 @@ export const consoleContext = createContext()
 const Context = ({children}) => {
 
   const [isOn, setIsOn] = useState(false)
-  const [btnClick, setBtnClick] = useState("")
+
   
   return (
-    <consoleContext.Provider value={[isOn, setIsOn, btnClick, setBtnClick]}>
+    <consoleContext.Provider value={[isOn, setIsOn]}>
         {children}
     </consoleContext.Provider>
   )

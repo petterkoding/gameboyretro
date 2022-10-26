@@ -14,21 +14,10 @@ body {
     position: relative;
     z-index: 100;
     overflow: hidden;
-    
+  background: rgb(234, 179, 8);
 }
 
-body::after{
-  position: absolute;
-  content: "retro";
-  font-family: "Press Start 2P";
-  font-size: 15vw;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
+
 
 a {
   color: inherit;

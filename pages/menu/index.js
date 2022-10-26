@@ -16,8 +16,8 @@ const Menu = () => {
             <Link href="/beginning">
                 <a className="hover:bg-green-400 px-2 py-1">Beginning</a>
             </Link>
-            <Link href="/info">
-                <a className="hover:bg-green-400 px-2 py-1">Info</a>
+            <Link href="/hardware">
+                <a className="hover:bg-green-400 px-2 py-1">Hardware</a>
             </Link>
         </div>
       </nav>
