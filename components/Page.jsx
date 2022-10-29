@@ -48,7 +48,7 @@ export default function Page({children, pageTitle}) {
 
 const OffScreen = () => {
   return(
-    <div className="h-full w-full flex justify-center items-center">
+    <div className="h-full w-full flex justify-center items-center bg-indigo-700">
 
         <h1 className="font-Pixel text-gray-300 text-xs">Oh...it&apos; off again!</h1>
     </div>
