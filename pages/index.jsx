@@ -1,11 +1,7 @@
 import Page from "../components/Page"
 import { motion } from "framer-motion"
-import { useEffect } from "react"
-import Link from "next/link"
-
 
 export default function Home() {
-
 
   return (
       <Page pageTitle="Start">

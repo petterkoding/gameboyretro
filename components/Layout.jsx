@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
-import { consoleContext } from '../context/Context'
+import { deviceContext } from '../context/deviceContext'
 import Console from './Console'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
@@ -8,7 +8,7 @@ const Layout = ({children}) => {
 
   const [selectedColor, setSelectedColor] = useState("")
 
-  const CTX = useContext(consoleContext)
+  const {isOn} = useContext(deviceContext)
 
 
   const router = useRouter()
@@ -22,8 +22,8 @@ const Layout = ({children}) => {
   }
 
   return (
-    <div className={` ${CTX[0] ? "bg-yellow-500" : "bg-[#090a2c]"} w-full h-screen flex flex-col justify-center items-center relative transition-all duration-300 ease-linear pt-20`}>
-      <div className={`${CTX[0] ? "text-black" : "text-indigo-400"} uppercase text-5xl lg:text-8xl font-Pixel text-center mb-[-100px] lg:mb-24 skew-x-[30deg]`}>retro</div>
+    <div className={` ${isOn ? "bg-yellow-500" : "bg-[#090a2c]"} w-full h-screen flex flex-col justify-center items-center relative transition-all duration-300 ease-linear pt-20`}>
+      <div className={`${isOn ? "text-black" : "text-indigo-400"} uppercase text-5xl lg:text-8xl font-Pixel text-center mb-[-100px] lg:mb-24 skew-x-[30deg]`}>retro</div>
       <div className="h-auto flex flex-col items-center justify-center scale-[.6] lg:scale-100">
         <Console>
           <AnimatePresence mode="wait">
@@ -37,10 +37,10 @@ const Layout = ({children}) => {
             </motion.div>
           </AnimatePresence>
         </Console>
-        <div className={`${CTX[0] ? "text-black" : "text-indigo-300"} uppercase text-8xl font-Pixel mt-3 tracking-tighter text-center skew-x-[30deg]`} >game boy</div>
+        <div className={`${isOn ? "text-black" : "text-indigo-300"} uppercase text-8xl font-Pixel mt-3 tracking-tighter text-center skew-x-[30deg]`} >game boy</div>
         
 
-        { !CTX[0] &&
+        { !isOn &&
         <motion.div
           initial={{opacity: 0, y: -15}}
           animate={{opacity: 1, y: 0}}
@@ -59,7 +59,7 @@ const Layout = ({children}) => {
       </div>
           
           
-      <footer className={`${CTX[0] ? "text-black" : "text-indigo-300"} font-Pixel text-[10px] w-full flex items-center justify-center h-10 text-black z-[99999]`}>
+      <footer className={`${isOn ? "text-black" : "text-indigo-300"} font-Pixel text-[10px] w-full flex items-center justify-center h-10 text-black z-[99999]`}>
         created by Petter Iversen 2022
       </footer>
     </div>
