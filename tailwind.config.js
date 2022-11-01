@@ -8,7 +8,13 @@ module.exports = {
     extend: {
       fontFamily: {
         Pixel: ["'Press Start 2P'", "cursive"]
-      }
+      },
+      colors: {
+        "sunburst-main": "#a5750c",
+        "sunburst-dark": "#644503",
+        "sunburst-medium": "#a5750c",
+        "sunburst-neon": "#fab113"
+      },
     },
   },
   plugins: [],

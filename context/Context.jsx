@@ -1,4 +1,4 @@
-import React, {useState, createContext} from 'react'
+import React, {useState} from 'react'
 import { deviceContext } from './deviceContext'
 
 
@@ -7,7 +7,8 @@ const Context = ({children}) => {
   const {Provider} = deviceContext
 
   const [isOn, setIsOn] = useState(false)
-  const [nightColor, setNightColor] = useState("bg-[#6e6c68]")
+  const [nightColor, setNightColor] = useState("#6E6C68")
+
 
   
   return (

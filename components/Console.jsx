@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, {useContext, useState} from 'react'
 import { PlayIcon, ArrowDownIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { deviceContext } from '../context/deviceContext'
@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 const Console = ({children}) => {
 
-    const {isOn, setIsOn, nightColor, setNightColor} = useContext(deviceContext)    
+    const {isOn, setIsOn, nightColor} = useContext(deviceContext)
 
     const [x, setX] = useState(0)
     const [y, setY] = useState(0)
@@ -39,14 +39,15 @@ const Console = ({children}) => {
         animate={{x: x, y: y}}
         transition={{duration: 2, type: "tween"}}
         onAnimationComplete={resetConsolePos}
-        className={`${isOn ? "bg-[#D0CCBD]" : "bg-[#5e5c58]"} w-[450px] h-[700px] rounded-0 rounded-br-[50px] flex flex-col justify-between relative shadow-2xl ml-[2em]`} >
+        // main bg, thin edge
+        className={`${isOn ? "bg-[#D0CCBD]" : "bg-sunburst-neon"} w-[450px] h-[700px] rounded-0 rounded-br-[50px] flex flex-col justify-between relative shadow-2xl ml-[2em]`} >
 
         {/* box leftside */}
-        <div className={`${isOn ? "bg-[#807e77]" : "bg-[#3f3e3c]"}  w-[60px] h-full absolute skew-y-[45deg] left-[-60px] top-[-30px] z-[100]`} />
+        <div className={`${isOn ? "bg-[#807e77]" : "bg-sunburst-dark"}  w-[60px] h-full absolute skew-y-[45deg] left-[-60px] top-[-30px] z-[100]`} />
         {/* box top */}
-        <div className={`${isOn ? "bg-[#949289]" : "bg-[#7c7b74]"} w-[450px] h-[60px] absolute top-[-60px] left-[-31px] skew-x-[45deg]`} />
+        <div className={`${isOn ? "bg-[#949289]" : "bg-sunburst-medium"} w-[450px] h-[60px] absolute top-[-60px] left-[-31px] skew-x-[45deg]`} />
         {/* shadow behind */}
-        <div className={`${isOn ? "bg-black/80" : "bg-black"}  w-[400px] h-[400px] absolute bottom-[16px] left-[-215px] skew-x-[45deg] z-[-10]`} />
+        <div className={`${isOn ? "bg-black/80" : "bg-black/80"}  w-[400px] h-[400px] absolute bottom-[16px] left-[-215px] skew-x-[45deg] z-[-10]`} />
 
 
         {/* pointing arrow */}
@@ -63,21 +64,13 @@ const Console = ({children}) => {
         <div onClick={()=> setIsOn(!isOn)} className={`${isOn ? 'bg-[#70706d]' : 'bg-[#585857]'} absolute top-[-25px] left-0 skew-x-[45deg]  w-24 h-4 hover:cursor-pointer z-[9999]`}>
             <button className={`absolute top-0 ${isOn ? 'right-[0] ' : 'right-[32px]'} p-2 bg-zinc-900 w-16 h-4 transition duration-300 ease-in-out`}/>
         </div>
-        {/* shadow */}
-        <div className={`${isOn ? "bg-[#B5B3A6]" : "bg-[#6e6c68]"} w-[95%] h-[98%] rounded-0 rounded-br-[50px] absolute left-3 top-1 shadow-inner`}/>
 
-        {/* alternative colorway for nightmode */}
-        {/* {
-            !consoleCtx[0] && (
-                <div className={`${consoleCtx[0] ? "" : "bg-[#ce9e3e]"} w-[95%] h-[98%] rounded-0 rounded-br-[50px] absolute left-3 top-1 shadow-inner`}/>
-            )
-        } */}
-        {
-            !isOn && (
-                <div className={`${isOn ? "" : nightColor} w-[95%] h-[98%] rounded-0 rounded-br-[50px] absolute left-3 top-1 shadow-inner`}/>
-            )
-        }
+        {/* main cover */}
+        <div className={`${isOn ? "bg-[#B5B3A6]" : nightColor} w-[95%] h-[98%] rounded-t-[5px] rounded-bl-[5px] rounded-br-[50px] absolute left-3 top-1 shadow-inner`}/>
 
+     
+
+        {/* bluelight glow  */}
         {
             !isOn && (
                 <div className={`${isOn ? "bg-transparent" : "bg-gradient-to-b from-sky-600 blur-3xl"}  w-[450px] h-[400px] absolute bottom-[-400px] left-[200px] skew-x-[45deg] z-[-10] rounded-0 rounded-tr-[50px]`} />
