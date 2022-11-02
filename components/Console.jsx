@@ -11,25 +11,25 @@ const Console = ({children}) => {
     const [x, setX] = useState(0)
     const [y, setY] = useState(0)
 
-    function moveDevice(dir){
-        if(dir === "RIGHT"){
-            setX([0,20,0])
-        }
-        if(dir === "LEFT"){
-            setX([0,-20,0])
-        }
-        if(dir === "UP"){
-            setY([0,-20,0])
-        }
-        if(dir === "DOWN"){
-            setY([0,20,0])
-        }
-    }
+    // function moveDevice(dir){
+    //     if(dir === "RIGHT"){
+    //         setX([0,20,0])
+    //     }
+    //     if(dir === "LEFT"){
+    //         setX([0,-20,0])
+    //     }
+    //     if(dir === "UP"){
+    //         setY([0,-20,0])
+    //     }
+    //     if(dir === "DOWN"){
+    //         setY([0,20,0])
+    //     }
+    // }
 
-    function resetConsolePos(){
-        setY(0)
-        setX(0)
-    }
+    // function resetConsolePos(){
+    //     setY(0)
+    //     setX(0)
+    // }
 
 
   return (
@@ -38,7 +38,7 @@ const Console = ({children}) => {
         initial={{x:0, y: 0}}
         animate={{x: x, y: y}}
         transition={{duration: 2, type: "tween"}}
-        onAnimationComplete={resetConsolePos}
+        // onAnimationComplete={resetConsolePos}
         // main bg, thin edge
         className={`${isOn ? "bg-[#D0CCBD]" : "bg-sunburst-neon"} w-[450px] h-[700px] rounded-0 rounded-br-[50px] flex flex-col justify-between relative shadow-2xl ml-[2em]`} >
 
@@ -137,19 +137,27 @@ const Console = ({children}) => {
 
                     <div className="w-[30px] h-[30px] bg-gray-800 relative">
 
-                        <button onClick={()=>moveDevice("RIGHT")} className="w-[30px] h-[30px] bg-gray-800 absolute right-[-30px] bottom-0 rounded-r-lg after:hidden after:w-4 after:h-4 after:absolute after:top-1/2 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
+                        <button
+                            // onClick={()=>moveDevice("RIGHT")}
+                            className="w-[30px] h-[30px] bg-gray-800 absolute right-[-30px] bottom-0 rounded-r-lg after:hidden after:w-4 after:h-4 after:absolute after:top-1/2 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
                             <PlayIcon className={`${isOn ? "text-[#D0CCBD]" : "text-[#83827f]"} w-4 h-4  absolute right-[-16px] top-0 translate-y-1/2`}/>
                         </button>
 
-                        <button onClick={()=>moveDevice("LEFT")} className="w-[30px] h-[30px] bg-gray-800 absolute left-[-30px] bottom-0 rounded-l-lg after:hidden after:w-4 after:h-4 after:absolute after:top-1/2 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
+                        <button
+                            // onClick={()=>moveDevice("LEFT")}
+                            className="w-[30px] h-[30px] bg-gray-800 absolute left-[-30px] bottom-0 rounded-l-lg after:hidden after:w-4 after:h-4 after:absolute after:top-1/2 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
                             <PlayIcon className={`${isOn ? "text-[#D0CCBD]" : "text-[#83827f]"} w-4 h-4 rotate-[180deg] absolute left-[-16px] translate-y-1/2 top-0`}/>
                         </button>
 
-                        <button onClick={()=>moveDevice("UP")} className="w-[30px] h-[30px] bg-gray-800 absolute left-0 top-[-30px] rounded-t-lg after:hidden after:w-4 after:h-4 after:absolute after:top-172 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
+                        <button
+                            // onClick={()=>moveDevice("UP")}
+                            className="w-[30px] h-[30px] bg-gray-800 absolute left-0 top-[-30px] rounded-t-lg after:hidden after:w-4 after:h-4 after:absolute after:top-172 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
                             <PlayIcon className={`${isOn ? "text-[#D0CCBD]" : "text-[#83827f]"} w-4 h-4 rotate-[-90deg] absolute left-0 top-[-16px] right-0 translate-x-1/2`}/>
                         </button>
 
-                        <button onClick={()=>moveDevice("DOWN")} className="w-[30px] h-[30px] bg-gray-800 absolute left-0 top-[30px] rounded-b-lg after:hidden after:w-4 after:h-4 after:absolute after:top-1/2 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
+                        <button
+                            // onClick={()=>moveDevice("DOWN")}
+                            className="w-[30px] h-[30px] bg-gray-800 absolute left-0 top-[30px] rounded-b-lg after:hidden after:w-4 after:h-4 after:absolute after:top-1/2 after:right-1/2 after:translate-x-[50%] after:translate-y-[-50%] after:rounded-md after:bg-gray-500/40 after:hover:block">
                             <PlayIcon className={`${isOn ? "text-[#D0CCBD]" : "text-[#83827f]"} w-4 h-4 rotate-[90deg] absolute left-0 bottom-[-16px] right-0 translate-x-1/2`}/>
                         </button>
 
